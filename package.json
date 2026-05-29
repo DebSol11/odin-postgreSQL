@@ -1,0 +1,24 @@
+{
+  "name": "odin-postgresql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DebSol11/odin-postgreSQL.git"
+  },
+  "keywords": [],
+  "author": "example_user",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DebSol11/odin-postgreSQL/issues"
+  },
+  "homepage": "https://github.com/DebSol11/odin-postgreSQL#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
