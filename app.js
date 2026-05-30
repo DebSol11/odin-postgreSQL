@@ -5,7 +5,11 @@ const app = express();
 // Here we initiate the routes
 const newRoute = require("./routes/new")
 
+app.set("view engine", "ejs")
+
+app.use(express.static("public"))
 app.use("/new", newRoute);
+
 
 app.get("/", (req, res, next) => {
     console.log("usernames will be logged here - work in progress")
