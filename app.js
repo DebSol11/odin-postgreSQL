@@ -3,20 +3,17 @@ const express = require("express");
 const app = express();
 
 // Here we initiate the routes
-const newRoute = require("./routes/new")
+const newRoute = require("./routes/new");
 
-app.set("view engine", "ejs")
+const newController = require("./controllers/newController")
+
+app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 app.use("/new", newRoute);
 
-
-app.get("/", (req, res, next) => {
-    console.log("usernames will be logged here - work in progress")
-    res.send("Work in progress");
-    next();
-})
+app.get("/", newController.getUsernames);
 
 app.listen(3005, () => {
-    console.log("Server running on port 3005");
-})
+  console.log("Server running on port 3005");
+});
