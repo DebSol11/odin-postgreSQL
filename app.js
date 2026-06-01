@@ -5,7 +5,7 @@ const app = express();
 // Here we initiate the routes
 const newRoute = require("./routes/new");
 
-const newController = require("./controllers/newController")
+const newController = require("./controllers/newController");
 
 app.set("view engine", "ejs");
 

@@ -1,24 +1,20 @@
-// module.exports = {
-//     get : (req, res) => {
-//         res.render("index")
-//     },
-//     post : (req, res, next) => {
-//         console.log("username to be saved: ", req.body.username)
-//         res.send(req.body.username);
-//         next()
-//     }
-// };
-
 const db = require("../db/queries");
 
+// includes search functionality
 async function getUsernames(req, res) {
-  const usernames = await db.getAllUsernames();
-  console.log("Usernames: ", usernames);
-  res.send("Usernames: " + usernames.map(user => user.username).join(", "));
+  if (!req.query.search) {
+    const usernames = await db.getAllUsernames();
+    console.log("Usernames: ", usernames);
+    res.send("Usernames: " + usernames.map((user) => user.username).join(", "));
+  } else {
+    const username = req.query.search;
+    const searchedUser = await db.searchUsername(username);
+    res.send(searchedUser);
+  }
 }
 
 async function createUsernameGet(req, res) {
-  res.render("index")
+  res.render("index");
 }
 
 async function createUsernamePost(req, res) {
@@ -27,8 +23,15 @@ async function createUsernamePost(req, res) {
   res.redirect("/");
 }
 
+async function searchUsernameGet(req, res) {
+  const username = req.query.search;
+  const searchedUser = await db.searchUsername(username);
+  res.send(searchedUser);
+}
+
 module.exports = {
   getUsernames,
   createUsernameGet,
-  createUsernamePost
+  createUsernamePost,
+  searchUsernameGet,
 };
