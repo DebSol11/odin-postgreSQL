@@ -14,13 +14,19 @@ async function searchUsername(username) {
     "SELECT * FROM usernames WHERE username LIKE ($1)",
     [username],
   );
-  // const { rows } = await pool.query(
-  //   "SELECT * FROM usernames WHERE username LIKE ("username")");
-  // return rows;
+}
+
+async function deleteAllUsernames() {
+  const { rows } = await pool.query("DELETE FROM usernames");
+  return rows;
+  //or
+  //   const { rows } = await pool.query("TRUNCATE TABLE usernames");
+  //   return rows;
 }
 
 module.exports = {
   getAllUsernames,
   insertUsername,
   searchUsername,
+  deleteAllUsernames,
 };
